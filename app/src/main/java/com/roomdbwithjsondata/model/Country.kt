@@ -1,5 +1,6 @@
 package com.roomdbwithjsondata.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -12,5 +13,8 @@ data class Country(
     val subregion: String?,
     val population: Long?,
     val area: Double?,
-    val flagEmoji: String?
+    val flagEmoji: String?,
+    @ColumnInfo(name = "countryFlag")
+    val countryFlag: String
+
 )

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.roomdbwithjsondata.databinding.ItemCountryBinding
 import com.roomdbwithjsondata.model.Country
 
@@ -22,6 +23,9 @@ class CountryAdapter : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() 
         val country = countries[position]
         holder.binding.textCountryName.text = country.commonName
         holder.binding.textCapital.text = country.cca3
+        Glide.with(holder.itemView)
+            .load(country.countryFlag)
+            .into(holder.binding.imgFlag)
     }
 
     override fun getItemCount(): Int = countries.size

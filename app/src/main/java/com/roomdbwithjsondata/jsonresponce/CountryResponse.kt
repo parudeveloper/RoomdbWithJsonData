@@ -10,12 +10,17 @@ data class CountryResponse(
     @SerializedName("subregion") val subregion: String?,
     @SerializedName("population") val population: Long?,
     @SerializedName("area") val area: Double?,
-    @SerializedName("flag") val flagEmoji: String?
+    @SerializedName("flag") val flagEmoji: String?,
+    @SerializedName("flags") val flags: Flags
 )
 
 data class Name(
     @SerializedName("common") val common: String,
     @SerializedName("official") val official: String
+)
+
+data class Flags(
+    @SerializedName("png") val png: String
 )
 
 // Convert response to entity
@@ -27,5 +32,6 @@ fun CountryResponse.toCountry() = Country(
     subregion = subregion,
     population = population,
     area = area,
-    flagEmoji = flagEmoji
+    flagEmoji = flagEmoji,
+    countryFlag = flags.png
 )

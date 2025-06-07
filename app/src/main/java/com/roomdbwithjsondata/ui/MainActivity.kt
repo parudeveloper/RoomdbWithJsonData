@@ -1,10 +1,8 @@
 package com.roomdbwithjsondata.ui
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.annotation.RawRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +12,7 @@ import com.roomdbwithjsondata.adapter.CountryAdapter
 import com.roomdbwithjsondata.databinding.ActivityMainBinding
 import com.roomdbwithjsondata.jsonresponce.CountryResponse
 import com.roomdbwithjsondata.jsonresponce.toCountry
+import com.roomdbwithjsondata.utility.readRawResource
 import com.roomdbwithjsondata.viewmodel.CountryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -42,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         // Insert into DB via ViewModel
         viewModel.insertCountries(countryList)
 
-
         val adapter = CountryAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
@@ -51,12 +49,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.countries.collect { countries ->
                 // update UI with country list
                 adapter.submitList(countries)
-
             }
         }
-
-    }
-    fun Context.readRawResource(@RawRes resId: Int): String {
-        return resources.openRawResource(resId).bufferedReader().use { it.readText() }
     }
 }

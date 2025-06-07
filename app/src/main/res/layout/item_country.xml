@@ -1,23 +1,37 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="12dp"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     android:background="#EEEEEE"
-    android:layout_margin="8dp">
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/imgFlag"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/textCountryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/imgFlag"
+        android:layout_alignTop="@id/imgFlag"
+        android:layout_marginStart="12dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Country Name" />
 
     <TextView
         android:id="@+id/textCapital"
-        android:textSize="14sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textCountryName"
+        android:layout_alignStart="@id/textCountryName"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        android:text="Capital" />
 
-</LinearLayout>
+</RelativeLayout>
